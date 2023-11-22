@@ -6,22 +6,23 @@ const cryptoApiHeaders  = {
     'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
 }
 
-const baseurl = 'https://coinranking1.p.rapidapi.com/coins';
+// should be camelcased 
+const baseUrl = 'https://coinranking1.p.rapidapi.com';
 
-const createRequest = (url) => ({ url, Headers : cryptoApiHeaders});
+const createRequest = (url) => ({ url, headers : cryptoApiHeaders});
 
 export const cryptoApi = createApi({
     reducerPath  : 'cryptoApi',
-    baseQuery : fetchBaseQuery({baseurl}),
+    baseQuery : fetchBaseQuery({baseUrl}),
     endpoints : (builder) => ({
         getCryptos : builder.query({
-            query : () => createRequest('/exchanges')
+            query : () => createRequest('/coins')
         })
     })
 });
 
 export const {
-    useGetCryptosQeury,
+    useGetCryptosQuery,
 } = cryptoApi;
 
 // const options = {
